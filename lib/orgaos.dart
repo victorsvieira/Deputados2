@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'orgaosDetalhes.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -55,14 +56,13 @@ class _OrgaosState extends State<Orgaos> {
                     subtitle: Text(orgao['nome'].toString()),
 
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         OrgaoDetalhes(orgaoId: orgao['id']),
-                      //   ),
-                      // );
-                      // Adicione aqui a ação ao clicar no orgao, se necessário
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              OrgaosDetalhes(orgaoId: orgao['id']),
+                        ),
+                      );
                     },
                     // Outros detalhes ou ações que deseja adicionar para cada orgao
                   ),

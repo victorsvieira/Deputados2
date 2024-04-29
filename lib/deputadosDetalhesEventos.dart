@@ -79,7 +79,8 @@ class _DeputadosDetalhesEventosState extends State<DeputadosDetalhesEventos> {
                                 ?.toString(); // Verifica se a URL é nula
                             if (url != null) {
                               try {
-                                await _launchYoutubeUrl(evento['urlRegistro']);
+                                String videoId = _extractYoutubeVideoId(url);
+                                await _launchYoutubeUrl(videoId);
                               } catch (e) {
                                 print('Erro ao abrir a URL do YouTube: $e');
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -140,16 +141,18 @@ String formatarDataHora(String dataHora) {
   return '$horaFormatada do dia $dataFormatada';
 }
 
-Future<void> _launchYoutubeUrl(String url) async {
-  final Uri youtubeUrl = Uri.parse(url);
+// Função para extrair a ID do vídeo do YouTube da URL
+String _extractYoutubeVideoId(String url) {
+  RegExp regExp = RegExp(r'(?<=v=)[a-zA-Z0-9_-]+');
+  Match match = regExp.firstMatch(url)!;
+  return match.group(0)!;
+}
 
-  if (await canLaunch(youtubeUrl.toString())) {
-    await launch(
-      youtubeUrl.toString(),
-      forceWebView: true, // Abre a URL no navegador padrão
-      enableJavaScript: true, // Permite a execução de JavaScript na WebView
-    );
+Future<void> _launchYoutubeUrl(String videoId) async {
+  String youtubeUrl = 'https://www.youtube.com/watch?v=' + videoId;
+  if (await canLaunch(youtubeUrl)) {
+    await launch(youtubeUrl);
   } else {
-    throw Exception('Could not launch $url');
+    throw 'Não foi possível abrir a URL do YouTube: $youtubeUrl';
   }
 }
