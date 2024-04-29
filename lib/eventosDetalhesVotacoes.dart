@@ -45,7 +45,11 @@ class _EventosDetalhesVotacoesState extends State<EventosDetalhesVotacoes> {
         title: const Text("Votações do evento"),
       ),
       body: eventosVotacoes.isEmpty
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: eventosVotacoes.isNotEmpty
+                  ? CircularProgressIndicator()
+                  : Text("Não há informações"),
+            )
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

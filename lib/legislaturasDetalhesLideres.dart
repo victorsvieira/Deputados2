@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 class LegislaturasDetalhesLideres extends StatefulWidget {
   final int legislaturaId;
 
@@ -68,19 +70,23 @@ class _LegislaturasDetalhesLideresState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(lideresLegislatura['parlamentar']['nome']
-                            .toString()),
-                        Text(lideresLegislatura['parlamentar']['siglaPartido']
-                            .toString()),
-                        Text(lideresLegislatura['parlamentar']['siglaUf']
-                            .toString()),
-                        Text(lideresLegislatura['parlamentar']['email']
-                            .toString()),
-                        Text(lideresLegislatura['parlamentar']['urlFoto']
-                            .toString()),
-                        Text(lideresLegislatura['titulo'].toString()),
-                        Text(lideresLegislatura['bancada']['tipo'].toString()),
-                        Text(lideresLegislatura['dataInicio'].toString()),
+                        Text(
+                          "${lideresLegislatura['parlamentar']['nome']} (${lideresLegislatura['parlamentar']['siglaPartido']} - ${lideresLegislatura['parlamentar']['siglaUf']})",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+
+                        Text(
+                            "${lideresLegislatura['parlamentar']['email'] != null ? lideresLegislatura['parlamentar']['email'] : "Sem informações"}"),
+
+                        Text(
+                            "${lideresLegislatura['titulo']} - ${lideresLegislatura['bancada']['tipo']}"),
+
+                        if (lideresLegislatura['dataInicio'] != null)
+                          Text(
+                            DateFormat('dd/MM/yyyy').format(
+                              DateTime.parse(lideresLegislatura['dataInicio']),
+                            ),
+                          ),
 
                         const Divider(), // Adiciona uma linha divisória entre despesas
                       ],

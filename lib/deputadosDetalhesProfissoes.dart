@@ -65,8 +65,11 @@ class _DeputadosDetalhesProfissoesState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          profissao['titulo'].toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(dataFormatada), // Exibe a data formatada
-                        Text(profissao['titulo'].toString()),
 
                         // Outros detalhes ou ações que deseja adicionar para cada frente
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:intl/intl.dart';
 
@@ -72,7 +73,46 @@ class _DeputadosDetalhesEventosState extends State<DeputadosDetalhesEventos> {
                             "Órgão: ${evento['orgaos'][0]['nome'].toString()} - ${evento['orgaos'][0]['sigla'].toString()}"),
                         Text(
                             "Local: ${evento['localCamara']['nome'].toString()}"),
-                        Text("Assistir: ${evento['urlRegistro'].toString()}"),
+                        GestureDetector(
+                          onTap: () async {
+                            String? url = evento['urlRegistro']
+                                ?.toString(); // Verifica se a URL é nula
+                            if (url != null) {
+                              try {
+                                await _launchYoutubeUrl(evento['urlRegistro']);
+                              } catch (e) {
+                                print('Erro ao abrir a URL do YouTube: $e');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text('Não foi possível abrir o vídeo.'),
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                );
+                              }
+                            } else {
+                              // URL é nula, exibe uma mensagem para o usuário
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Não há vídeo disponível.'),
+                                  duration: Duration(seconds: 3),
+                                ),
+                              );
+                            }
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.play_circle_filled,
+                                  color: Colors.red), // Ícone do YouTube
+                              SizedBox(
+                                  width:
+                                      8), // Espaçamento entre o ícone e o texto
+                              Text("Assistir",
+                                  style: TextStyle(
+                                      color: Colors.red)), // Texto "Assistir"
+                            ],
+                          ),
+                        ),
 
                         const Divider(), // Adiciona uma linha divisória entre eventos
                       ],
@@ -98,4 +138,18 @@ String formatarDataHora(String dataHora) {
 
   // Combina a hora e a data formatadas
   return '$horaFormatada do dia $dataFormatada';
+}
+
+Future<void> _launchYoutubeUrl(String url) async {
+  final Uri youtubeUrl = Uri.parse(url);
+
+  if (await canLaunch(youtubeUrl.toString())) {
+    await launch(
+      youtubeUrl.toString(),
+      forceWebView: true, // Abre a URL no navegador padrão
+      enableJavaScript: true, // Permite a execução de JavaScript na WebView
+    );
+  } else {
+    throw Exception('Could not launch $url');
+  }
 }

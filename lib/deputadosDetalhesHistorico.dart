@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 class DeputadosDetalhesHistorico extends StatefulWidget {
   final String deputadoId;
 
@@ -57,9 +59,15 @@ class _DeputadosDetalhesHistoricoState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(historico['nomeEleitoral'].toString()),
-                        Text(historico['siglaPartido'].toString()),
-                        Text(historico['dataHora'].toString()),
+                        Text(
+                            "${historico['nomeEleitoral'].toString()} - ${historico['siglaPartido'].toString()}"),
+
+                        if (historico['dataHora'] != null)
+                          Text(
+                            DateFormat('dd/MM/yyyy').format(
+                              DateTime.parse(historico['dataHora']),
+                            ),
+                          ),
                         Text(historico['situacao'].toString()),
                         Text(historico['condicaoEleitoral'].toString()),
                         Text(historico['descricaoStatus'].toString()),

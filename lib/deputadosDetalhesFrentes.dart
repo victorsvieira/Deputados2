@@ -55,26 +55,38 @@ class _DeputadosDetalhesFrentesState extends State<DeputadosDetalhesFrentes> {
                 children: frentesDetalhes.map((frente) {
                   return Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ListTile(
-                          title: Text(frente['titulo'].toString()),
-
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    FrenteDetalhes(frenteId: frente['id']),
-                              ),
-                            );
-                            // Adicione aqui a ação ao clicar no frente, se necessário
-                          },
-                          // Outros detalhes ou ações que deseja adicionar para cada frente
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                FrenteDetalhes(frenteId: frente['id']),
+                          ),
+                        );
+                        // Adicione aqui a ação ao clicar no frente, se necessário
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.grey[200], // Cor de fundo
                         ),
-                        const Divider(), // Adiciona uma linha divisória entre eventos
-                      ],
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              frente['titulo'].toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            const SizedBox(height: 5.0),
+                            const Divider(), // Adiciona uma linha divisória entre eventos
+                          ],
+                        ),
+                      ),
                     ),
                   );
                 }).toList(),

@@ -44,7 +44,11 @@ class _EventosDetalhesPautaState extends State<EventosDetalhesPauta> {
         title: const Text("Pauta do evento"),
       ),
       body: eventosPauta.isEmpty
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: eventosPauta.isNotEmpty
+                  ? CircularProgressIndicator()
+                  : Text("Não há informações"),
+            )
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

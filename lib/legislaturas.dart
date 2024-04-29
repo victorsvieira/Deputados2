@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'LegislaturasDetalhesLideres.dart';
 
@@ -51,8 +52,10 @@ class _LegislaturasState extends State<Legislaturas> {
                   elevation: 3,
                   margin: const EdgeInsets.all(8),
                   child: ListTile(
-                    title: Text(legislatura['dataInicio'].toString()),
-                    subtitle: Text(legislatura['dataFim'].toString()),
+                    title: Text(
+                        "Início: ${DateFormat('dd/MM/yyyy').format(DateTime.parse(legislatura['dataInicio']))}"),
+                    subtitle: Text(
+                        "Fim: ${DateFormat('dd/MM/yyyy').format(DateTime.parse(legislatura['dataFim']))}"),
                     onTap: () {
                       Navigator.push(
                         context,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 class LegislaturasDetalhesMesa extends StatefulWidget {
   final int legislaturaId;
 
@@ -53,11 +55,18 @@ class _LegislaturasDetalhesMesaState extends State<LegislaturasDetalhesMesa> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(mesaLegislatura['titulo'].toString()),
-                        Text(mesaLegislatura['nome'].toString()),
-                        Text(mesaLegislatura['siglaPartido'].toString()),
-                        Text(mesaLegislatura['siglaUf'].toString()),
-                        Text(mesaLegislatura['dataInicio'].toString()),
+                        Text(
+                          "${mesaLegislatura['nome']} - ${mesaLegislatura['titulo']}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                            "${mesaLegislatura['siglaPartido']} - ${mesaLegislatura['siglaUf']}"),
+                        if (mesaLegislatura['dataInicio'] != null)
+                          Text(
+                            DateFormat('dd/MM/yyyy').format(
+                              DateTime.parse(mesaLegislatura['dataInicio']),
+                            ),
+                          ),
                         const Divider(),
                       ],
                     ),

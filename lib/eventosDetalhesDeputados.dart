@@ -45,7 +45,11 @@ class _EventosDetalhesDeputadosState extends State<EventosDetalhesDeputados> {
         title: const Text("Deputados do evento"),
       ),
       body: eventosDeputados.isEmpty
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: eventosDeputados.isNotEmpty
+                  ? CircularProgressIndicator()
+                  : Text("Não há informações"),
+            )
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -52,7 +52,11 @@ class _FrenteDetalhesState extends State<FrenteDetalhes> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Título: ${frenteDetalhes['titulo'] ?? 'nada'}'),
+                        Text(
+                          '${frenteDetalhes['titulo'] ?? 'nada'}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                         Text(
                             '\nCoordenador: ${frenteDetalhes['coordenador']['nome'] ?? 'nada'}'),
                         Text(

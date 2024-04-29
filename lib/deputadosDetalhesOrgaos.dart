@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 class DeputadosDetalhesOrgaos extends StatefulWidget {
   final String deputadoId;
 
@@ -56,11 +58,20 @@ class _DeputadosDetalhesOrgaosState extends State<DeputadosDetalhesOrgaos> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(orgao['siglaOrgao'].toString()),
-                        Text(orgao['nomeOrgao'].toString()),
-                        Text(orgao['nomePublicacao'].toString()),
-                        Text(orgao['titulo'].toString()),
-                        Text(orgao['dataInicio'].toString()),
+                        Text(
+                          "${orgao['siglaOrgao']} - ${orgao['nomeOrgao']}\n",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+
+                        Text("${orgao['nomePublicacao']}"),
+                        Text("${orgao['titulo']}"),
+
+                        if (orgao['dataInicio'] != null)
+                          Text(
+                            DateFormat('dd/MM/yyyy').format(
+                              DateTime.parse(orgao['dataInicio']),
+                            ),
+                          ),
 
                         // Outros detalhes ou ações que deseja adicionar para cada frente
 

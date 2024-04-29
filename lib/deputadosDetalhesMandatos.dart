@@ -46,7 +46,11 @@ class _DeputadosDetalhesMandatosState extends State<DeputadosDetalhesMandatos> {
         title: const Text("Mandatos externos do Parlamentar"),
       ),
       body: mandatosDetalhes.isEmpty
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: mandatosDetalhes.isNotEmpty
+                  ? CircularProgressIndicator()
+                  : Text("Não há informações"),
+            )
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,13 +60,14 @@ class _DeputadosDetalhesMandatosState extends State<DeputadosDetalhesMandatos> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(mandato['cargo'].toString()),
-                        Text(mandato['siglaUf'].toString()),
-                        Text(mandato['municipio'].toString()),
-                        Text(mandato['anoInicio'].toString()),
-                        Text(mandato['anoFim'].toString()),
-                        Text(mandato['siglaPartidoEleicao'].toString()),
-                        Text(mandato['uriPartidoEleicao'].toString()),
+                        Text(
+                            "Cargo: ${mandato['cargo']}, ${mandato['municipio']} - ${mandato['siglaUf']}"),
+
+                        Text(
+                            "Início em ${mandato['anoInicio']} até ${mandato['anoFim']}"),
+
+                        Text(
+                            "Partido de eleição: ${mandato['siglaPartidoEleicao']}"),
 
                         // Outros detalhes ou ações que deseja adicionar para cada frente
 

@@ -49,9 +49,13 @@ class _BlocosDetalhesState extends State<BlocosDetalhes> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('\nNome: ${blocoDetalhes['nome'] ?? 'nada'}'),
                       Text(
-                          '\nDESCRIÇÃO: ${blocoDetalhes['descricao'] ?? 'nada'}'),
+                        '${blocoDetalhes['nome'] ?? 'nada'}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Text(
+                          '\nDESCRIÇÃO: ${blocoDetalhes['descricao'] ?? 'Sem informações'}'),
                     ]),
               ));
   }

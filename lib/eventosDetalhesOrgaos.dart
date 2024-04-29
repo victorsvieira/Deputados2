@@ -44,7 +44,11 @@ class _EventosDetalhesOrgaosState extends State<EventosDetalhesOrgaos> {
         title: const Text("Órgãos do evento"),
       ),
       body: eventosOrgaos.isEmpty
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: eventosOrgaos.isNotEmpty
+                  ? CircularProgressIndicator()
+                  : Text("Não há informações"),
+            )
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
