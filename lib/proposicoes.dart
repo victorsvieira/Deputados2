@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'proposicoesDetalhes.dart';
 // import 'OrgaosDetalhes.dart';
 
 class Proposicoes extends StatefulWidget {
-  const Proposicoes({super.key});
+  const Proposicoes({Key? key}) : super(key: key);
 
   @override
   State<Proposicoes> createState() => _ProposicoesState();
@@ -44,30 +45,37 @@ class _ProposicoesState extends State<Proposicoes> {
       body: proposicoes.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: proposicoes.length,
+              itemCount: proposicoes.length + 1, // +1 para o item adicional
               itemBuilder: (context, index) {
-                final proposicao = proposicoes[index];
+                if (index == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Estão sendo mostradas apenas as proposições que foram apresentadas ou tiveram alguma mudança de situação nos últimos 30 dias.",
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  );
+                }
+                final proposicao = proposicoes[index - 1];
                 return Card(
                   elevation: 3,
                   margin: const EdgeInsets.all(8),
                   child: ListTile(
-                    title: Text(proposicao['siglaTipo'].toString()),
-                    trailing: Text(proposicao['ano'].toString()),
-
-                    subtitle: Text(proposicao['ementa'].toString()),
-
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         OrgaoDetalhes(proposicaoId: proposicao['id']),
-                      //   ),
-                      // );
-                      // Adicione aqui a ação ao clicar no proposicao, se necessário
-                    },
-                    // Outros detalhes ou ações que deseja adicionar para cada proposicao
-                  ),
+                      title: Text(proposicao['siglaTipo'].toString()),
+                      trailing: Text(proposicao['ano'].toString()),
+                      subtitle:
+                          Text('Ementa: ${proposicao['ementa'].toString()}'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProposicoesDetalhes(
+                                proposicaoId: proposicao['id']),
+                          ),
+                        );
+                      }),
                 );
               },
             ),

@@ -7,6 +7,7 @@ import 'frentes.dart';
 import 'orgaos.dart';
 import 'proposicoes.dart';
 import 'votacoes.dart';
+import 'partidos.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -89,6 +90,16 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Orgaos()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.local_police_outlined),
+              title: const Text("Partidos"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Partidos()),
                 );
               },
             ),
