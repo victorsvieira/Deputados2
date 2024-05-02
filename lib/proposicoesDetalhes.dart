@@ -39,10 +39,9 @@ class _ProposicoesDetalhesState extends State<ProposicoesDetalhes> {
 
   @override
   Widget build(BuildContext context) {
-    // Implemente aqui o layout para exibir os detalhes do evento
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Detalhes do Partido'),
+          title: const Text('Detalhes da Proposição'),
         ),
         body: proposicoesDetalhes.isEmpty
             ? const Center(child: CircularProgressIndicator())
