@@ -106,6 +106,12 @@ class _DeputadosState extends State<Deputados> {
 
   @override
   Widget build(BuildContext context) {
+    // Determina a orientação do dispositivo
+    final orientation = MediaQuery.of(context).orientation;
+
+    // Define o número de colunas com base na orientação
+    int crossAxisCount = orientation == Orientation.portrait ? 1 : 2;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -147,7 +153,13 @@ class _DeputadosState extends State<Deputados> {
               return const Center(child: Text('Nenhum deputado encontrado.'));
             }
 
-            return ListView.builder(
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:
+                    crossAxisCount, // Define o número de colunas na grade
+                crossAxisSpacing: 8.0, // Espaçamento horizontal entre os itens
+                mainAxisSpacing: 8.0, // Espaçamento vertical entre os itens
+              ),
               itemCount: deputados.length,
               itemBuilder: (context, index) {
                 final deputado = deputados[index];

@@ -91,63 +91,59 @@ class _DeputadosDetalhesState extends State<DeputadosDetalhes> {
                                 children: [
                                   Card(
                                     elevation: 3,
-                                    child: Flexible(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Image.network(
-                                              deputadosDetalhes['ultimoStatus']
-                                                  ['urlFoto'],
-                                              width: 15,
-                                              height: 200,
-                                              fit: BoxFit.fitHeight,
-                                            ),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Image.network(
+                                            deputadosDetalhes['ultimoStatus']
+                                                ['urlFoto'],
+                                            width: 15,
+                                            height: 200,
+                                            fit: BoxFit.fitHeight,
                                           ),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "\n${deputadosDetalhes['nomeCivil']}",
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                Text(
-                                                  '\n"${deputadosDetalhes['ultimoStatus']['nomeEleitoral']}"\n',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .stretch,
-                                                      children: [
-                                                        _buildInfoRow(
-                                                            Icons.group,
-                                                            "Partido: ${deputadosDetalhes['ultimoStatus']['siglaPartido']} (${deputadosDetalhes['ultimoStatus']['siglaUf']})"),
-                                                        _buildInfoRow(
-                                                            Icons.school,
-                                                            "Escolaridade: ${deputadosDetalhes['escolaridade']}"),
-                                                        _buildInfoRow(
-                                                            Icons.info,
-                                                            "Situação: ${deputadosDetalhes['ultimoStatus']['situacao']}"),
-                                                        _buildInfoRow(
-                                                            Icons.how_to_vote,
-                                                            "Condição eleitoral: ${deputadosDetalhes['ultimoStatus']['condicaoEleitoral']}"),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "\n${deputadosDetalhes['nomeCivil']}",
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                '\n"${deputadosDetalhes['ultimoStatus']['nomeEleitoral']}"\n',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .stretch,
+                                                    children: [
+                                                      _buildInfoRow(Icons.group,
+                                                          "Partido: ${deputadosDetalhes['ultimoStatus']['siglaPartido']} (${deputadosDetalhes['ultimoStatus']['siglaUf']})"),
+                                                      _buildInfoRow(
+                                                          Icons.school,
+                                                          "Escolaridade: ${deputadosDetalhes['escolaridade']}"),
+                                                      _buildInfoRow(Icons.info,
+                                                          "Situação: ${deputadosDetalhes['ultimoStatus']['situacao']}"),
+                                                      _buildInfoRow(
+                                                          Icons.how_to_vote,
+                                                          "Condição eleitoral: ${deputadosDetalhes['ultimoStatus']['condicaoEleitoral']}"),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   Card(

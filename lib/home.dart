@@ -24,104 +24,144 @@ class _HomeState extends State<Home> {
         title: const Text("Câmara dos Deputados"),
       ),
       drawer: Drawer(
-        child: ListView(
-          children: [
-            // DrawerHeader(
-            //   child:  age/2023/01/img20221121104428093-768x512.jpg",
-            //   ),
-            // ),
-            ListTile(
-              leading: Icon(Icons.group_sharp), // Ícone
-              title: Text("Deputados"), // Texto
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Deputados()),
-                );
-              },
-            ),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            textTheme: Theme.of(context).textTheme.apply(
+                  bodyColor: Colors.green[900], // Define a cor do texto
+                ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: ListView(
+              children: [
+                // DrawerHeader(
+                //   child:  age/2023/01/img20221121104428093-768x512.jpg",
+                //   ),
+                // ),
+                ListTile(
+                  leading: Icon(
+                    Icons.group_sharp,
+                    color: Colors.green[900],
+                  ), // Ícone
+                  title: Text("Deputados"), // Texto
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Deputados()),
+                    );
+                  },
+                ),
 
-            ListTile(
-              leading: Icon(Icons.handshake_rounded),
-              title: const Text("Blocos Partidários"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Blocos()),
-                );
-              },
+                ListTile(
+                  leading: Icon(
+                    Icons.handshake_rounded,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Blocos Partidários"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Blocos()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.event_available,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Eventos"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Eventos()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.handshake_rounded,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Frentes Parlamentares"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Frentes()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.library_books_rounded,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Legislaturas"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Legislaturas()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.workspaces_filled,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Órgãos"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Orgaos()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.local_police_outlined,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Partidos"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Partidos()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.article,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Proposições"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Proposicoes()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.how_to_vote_rounded,
+                    color: Colors.green[900],
+                  ),
+                  title: const Text("Votações"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Votacoes()),
+                    );
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.event_available),
-              title: const Text("Eventos"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Eventos()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.handshake_rounded),
-              title: const Text("Frentes Parlamentares"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Frentes()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.library_books_rounded),
-              title: const Text("Legislaturas"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Legislaturas()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.workspaces_filled),
-              title: const Text("Órgãos"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Orgaos()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.local_police_outlined),
-              title: const Text("Partidos"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Partidos()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.article),
-              title: const Text("Proposições"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Proposicoes()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.how_to_vote_rounded),
-              title: const Text("Votações"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Votacoes()),
-                );
-              },
-            ),
-          ],
+          ),
         ),
       ),
       body: const Padding(

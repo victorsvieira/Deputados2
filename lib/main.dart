@@ -13,8 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Deputados',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+          fontFamily: 'Arial', // Define a fonte para 'Roboto'
+
+          colorSchemeSeed: Colors.green,
+          appBarTheme: const AppBarTheme(elevation: 0),
+          useMaterial3: false,
+          iconTheme: IconThemeData(color: Colors.green[900])),
       home: const Home(),
     );
   }

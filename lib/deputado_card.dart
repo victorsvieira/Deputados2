@@ -20,6 +20,7 @@ class DeputadoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 500,
       alignment: Alignment.center,
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -35,59 +36,53 @@ class DeputadoCard extends StatelessWidget {
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8),
-                  bottomLeft: Radius.circular(8),
-                ),
-                image: DecorationImage(
-                  image: NetworkImage(urlFoto),
-                  fit: BoxFit.contain,
-                ),
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8),
+                bottomLeft: Radius.circular(8),
+              ),
+              image: DecorationImage(
+                image: NetworkImage(urlFoto),
+                fit: BoxFit.contain,
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    nome,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "$siglaPartido ($siglaUf)",
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 8),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DeputadosDetalhes(deputadoId: idDeputado),
-                        ),
-                      );
-                    },
-                    child: const Text('Detalhes'),
-                  ),
-                ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                nome,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              const SizedBox(height: 8),
+              Text(
+                "$siglaPartido ($siglaUf)",
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          DeputadosDetalhes(deputadoId: idDeputado),
+                    ),
+                  );
+                },
+                child: const Text('Detalhes'),
+              ),
+            ],
           ),
         ],
       ),
