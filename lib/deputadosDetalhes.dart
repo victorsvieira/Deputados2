@@ -105,7 +105,7 @@ class _DeputadosDetalhesState extends State<DeputadosDetalhes> {
                                         Expanded(
                                           child: Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Text(
                                                 "\n${deputadosDetalhes['nomeCivil']}",
@@ -114,8 +114,8 @@ class _DeputadosDetalhesState extends State<DeputadosDetalhes> {
                                               Text(
                                                 '\n"${deputadosDetalhes['ultimoStatus']['nomeEleitoral']}"\n',
                                                 style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18),
                                               ),
                                               Column(
                                                 crossAxisAlignment:

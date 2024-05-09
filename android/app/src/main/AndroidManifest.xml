@@ -6,7 +6,7 @@
     </queries>
 
     <application
-        android:label="deputados"
+        android:label="Câmara dos Deputados"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
